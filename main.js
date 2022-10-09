@@ -2,6 +2,14 @@
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
 
+const electron = require('electron')
+
+// Enable live reload for Electron too
+require('electron-reload')(__dirname, {
+    // Note that the path to electron may vary according to the main file
+    electron: require(`${__dirname}/node_modules/electron`)
+});
+
 function createWindow () {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -41,3 +49,4 @@ app.on('window-all-closed', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+

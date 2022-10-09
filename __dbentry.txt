@@ -1,0 +1,2 @@
+create table Barcodes(BarcodeValue int NOT NULL, Name varchar(40) NOT NULL, Category varchar(40) NOT NULL, TimeBeforeExpiration time NOT NULL);
+create table UserFood(Name varchar(40) NOT NULL, ExpirationDate DateTime NOT NULL, Category varchar(40) NOT NULL, AmountLeft smallint);

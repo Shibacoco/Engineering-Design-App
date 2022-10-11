@@ -26,7 +26,7 @@ var ingredient = [
 
 window.onload = showAllIngredients();
 
-function showAllIngredients() {
+function showAllIngredients(/**/) {
     //update to get items from database instead of from local array
     var table = document.getElementById("food");
     

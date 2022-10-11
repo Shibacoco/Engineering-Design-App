@@ -1,10 +1,16 @@
 const scanButton = document.getElementById("scanAdd");
-
-
 const addButton = document.getElementById("manualAdd");
-
-
 const removeButton = document.getElementById("deleteSelected");
+
+
+
+
+addButton.addEventListener('click', (event => {
+    console.log("jottem.")
+}) )
+
+
+
 
 removeButton.addEventListener('click', (event => {
     var checkboxes = document.getElementsByName("checkboxInTable");
@@ -30,12 +36,11 @@ function addWithScanner(){
 }
 
 function addManually(){
+
+
+
     //dialog gebruiken 
     //https://www.electronjs.org/docs/latest/api/dialog
     //input gebruiker afwachten
     //input toevoegen aan db
-}
-
-function deleteSelected(){
-    
 }

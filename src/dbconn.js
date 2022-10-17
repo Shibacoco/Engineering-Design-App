@@ -15,3 +15,7 @@ connection.connect((err) => {
 });
 
 module.exports.connection = connection;
+
+array.forEach(element => {
+    
+});

@@ -26,4 +26,21 @@ table {
     text-align: center;
 }
 
+.form {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 16em;
+    padding-bottom: 30px;
+    justify-content: center;
+}
+
+.date-input {
+    width: 172px
+}
+
+.bold {
+    font-weight: bold;
+}
+
 /* Add styles here to customize the appearance of your app */

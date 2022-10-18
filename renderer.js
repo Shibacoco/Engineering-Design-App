@@ -5,10 +5,36 @@
  * `contextIsolation` is turned on. Use the contextBridge API in `preload.js`
  * to expose Node.js functionality from the main process.
  */
-
+//-------------------------------------------------CONSTS---------------------------------------------------------------
+const ownedFood = [
+    // {
+    //     "id": "0",
+    //     "name": "tomato",
+    //     "expiration date": "01-01-1970",
+    //     "category": "fruit",
+    //     "amount": "2"
+    // },
+    // {
+    //     "id": "1",
+    //     "name": "carrot",
+    //     "expiration date": "01-01-1970",
+    //     "category": "vegetables",
+    //     "amount": "5"
+    // },
+    // {
+    //     "id": "2",
+    //     "name": "banana",
+    //     "expiration date": "01-01-1970",
+    //     "category": "fruit",
+    //     "amount": "69"
+    //
+];
 const infoTable = document.getElementById("foodTable");
 const removeButton = document.getElementById("deleteSelected");
-const manualAdd = document.getElementById("manualAdd");
+const manualAddReveal = document.getElementById("manualAddReveal");
+
+
+//-------------------------------------------------CLASSES--------------------------------------------------------------
 
 class food {
     static num = 0;
@@ -31,30 +57,7 @@ class food {
     }
 }
 
-const ownedFood = [
-    // {
-    //     "id": "0",
-    //     "name": "tomato",
-    //     "expiration date": "01-01-1970",
-    //     "category": "fruit",
-    //     "amount": "2"
-    // },
-    // {
-    //     "id": "1",
-    //     "name": "carrot",
-    //     "expiration date": "01-01-1970",
-    //     "category": "vegetables",
-    //     "amount": "5"
-    // },
-    // {
-    //     "id": "2",
-    //     "name": "banana",
-    //     "expiration date": "01-01-1970",
-    //     "category": "fruit",
-    //     "amount": "69"
-    // }
-];
-
+//------------------------------------------------FUNCTIONS-------------------------------------------------------------
 
 function showIngredients(e){
     e.forEach(e => {
@@ -77,6 +80,8 @@ function showIngredients(e){
     return null;
 }
 
+//-------------------------------------------EVENTLISTENERS-------------------------------------------------------------
+
 removeButton.addEventListener('click', (() => {
     const checkboxes = document.getElementsByName("checkboxInTable");
 
@@ -92,27 +97,43 @@ removeButton.addEventListener('click', (() => {
     }
 }))
 
-manualAdd.addEventListener('click', (() => {
-    var tempDate = new Date();
-    var result = tempDate.setDate(tempDate.getDate() + 3);
-    new food("banana", "mmm yellow banana fruit", 3, new Date(result));
+manualAddReveal.addEventListener('click', (() => {
+    const form = document.getElementById("manualAddForm");
+    form.innerHTML = "<p class=\"bold\">Add your ingredient here</p>\n" +
+        "  <input id=\"manualName\" type=\"text\" placeholder=\"Name\">\n" +
+        "  <input id=\"manualCategory\" type=\"text\" placeholder=\"Category\">\n" +
+        "  <input id=\"manualAmount\" type=\"number\" placeholder=\"0\">\n" +
+        "  <input id=\"manualExpirationDate\" type=\"date\" class=\"date-input\">\n" +
+        "  <input id=\"manualAdd\" type=\"button\" value=\"Add Ingredient to list\">";
+
+
+    const manualAdd = document.getElementById('manualAdd');
+    manualAdd.addEventListener('click', (() => {
+        let name = document.getElementById('manualName');
+        let category = document.getElementById('manualCategory');
+        let amount = document.getElementById('manualAmount');
+        let date = document.getElementById('manualExpirationDate');
+
+        ownedFood.push(new food(name, category, date, amount));
+
+        //update window to show new entry
+    }))
 }));
+
+
+
+
+//----------------------------------------SHOW INITIAL INGREDIENTS------------------------------------------------------
 
 window.onload = showIngredients(ownedFood);
 
+//------------------------------------------------TESTBUTTON------------------------------------------------------------
 
+const testbutton = document.getElementById("testbutton");
 
-
-// const test = document.getElementById('testbutton');
-// test.addEventListener('click', () => {
-//     console.log(ownedFood);
-// })
-
-const badabing = document.getElementById("testbutton");
-
-badabing.addEventListener('click', () => {
-    console.log(window.apiKey.popupbox())
+testbutton.addEventListener('click', () => {
 });
+
 
 
 

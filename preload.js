@@ -5,13 +5,18 @@
  *
  * https://www.electronjs.org/docs/latest/tutorial/sandbox
  */
-const { contextBridge, ipcRenderer } = require('electron');
+const { contextBridge, ipcRenderer, dialog } = require('electron');
+let apiKey = "sdf8dfyns23";
 
 contextBridge.exposeInMainWorld('versions', {
     node: () => process.versions.node,
     chrome: () => process.versions.chrome,
     electron: () => process.versions.electron,
     ping: () => ipcRenderer.invoke('ping'),
+})
+
+contextBridge.exposeInMainWorld(apiKey, {
+    popupbox: () => dialog.showOpenDialog({ properties: ['openFile', 'multiSelections'] })
 })
 
 

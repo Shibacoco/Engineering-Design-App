@@ -5,31 +5,54 @@
  * `contextIsolation` is turned on. Use the contextBridge API in `preload.js`
  * to expose Node.js functionality from the main process.
  */
+
 const infoTable = document.getElementById("foodTable");
 const removeButton = document.getElementById("deleteSelected");
+const manualAdd = document.getElementById("manualAdd");
 
-const ingredient = [
-    {
-        "id": "0",
-        "name": "tomato",
-        "expiration date": "01-01-1970",
-        "category": "fruit",
-        "amount": "2"
-    },
-    {
-        "id": "1",
-        "name": "carrot",
-        "expiration date": "01-01-1970",
-        "category": "vegetables",
-        "amount": "5"
-    },
-    {
-        "id": "2",
-        "name": "banana",
-        "expiration date": "01-01-1970",
-        "category": "fruit",
-        "amount": "69"
+class food {
+    static num = 0;
+    id;
+    name;
+    category;
+    expirationDate;
+    amount;
+
+    constructor(name, category, amount, expirationDate) {
+        // console.log(food.num);
+        this.id = food.num;
+        this.name = name;
+        this.category = category;
+        this.expirationDate = expirationDate;
+        this.amount = amount;
+        // this.expirationDate = new Date(Date() + expirationtime);
+        food.num++;
+        ownedFood.push(this);
     }
+}
+
+const ownedFood = [
+    // {
+    //     "id": "0",
+    //     "name": "tomato",
+    //     "expiration date": "01-01-1970",
+    //     "category": "fruit",
+    //     "amount": "2"
+    // },
+    // {
+    //     "id": "1",
+    //     "name": "carrot",
+    //     "expiration date": "01-01-1970",
+    //     "category": "vegetables",
+    //     "amount": "5"
+    // },
+    // {
+    //     "id": "2",
+    //     "name": "banana",
+    //     "expiration date": "01-01-1970",
+    //     "category": "fruit",
+    //     "amount": "69"
+    // }
 ];
 
 
@@ -63,17 +86,33 @@ removeButton.addEventListener('click', (() => {
 
     for(let i = checkboxes.length; i > 0; i--) {
         if(checkboxes[i - 1].checked){
-            ingredient.splice(i - 1, 1)
+            ownedFood.splice(i - 1, 1)
             checkboxes[i - 1].parentElement.parentElement.remove();
         }
     }
 }))
 
-window.onload = showIngredients(ingredient);
+manualAdd.addEventListener('click', (() => {
+    var tempDate = new Date();
+    var result = tempDate.setDate(tempDate.getDate() + 3);
+    new food("banana", "mmm yellow banana fruit", 3, new Date(result));
+}));
 
-const test = document.getElementById('checkarray');
-test.addEventListener('click', () => {
-})
+window.onload = showIngredients(ownedFood);
+
+
+
+
+// const test = document.getElementById('testbutton');
+// test.addEventListener('click', () => {
+//     console.log(ownedFood);
+// })
+
+const badabing = document.getElementById("testbutton");
+
+badabing.addEventListener('click', () => {
+    console.log(window.apiKey.popupbox())
+});
 
 
 

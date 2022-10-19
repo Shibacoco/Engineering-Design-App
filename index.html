@@ -15,24 +15,19 @@
 <body>
 <div class="center">
   <button id="scanAdd"> Scan your barcode </button>
-  <button id="manualAddReveal"> Manually add a product </button>
+  <button id="addFood"> Manually add a product </button>
   <button id="deleteSelected"> Delete selected item(s) </button>
   <button id="testbutton"> Testbutton </button>
 </div>
 
 <br>
-<form id="manualAddForm" class="form">
-<!--  <p class="bold">Add your ingredient here</p>-->
-<!--  <input type="text" placeholder="Name">-->
-<!--  <input type="text" placeholder="Category">-->
-<!--  <input type="date" class="date-input">-->
-<!--  <input type="number" placeholder="0">-->
-<!--  <input id="addButton" type="button" value="Add Ingredient to list">-->
-</form>
+
+<div id="addFoodChoice"></div>
 
 <table id="foodTable">
   <Tr>
     <th> <input type="checkbox" class="checkboxtable" name="selectAllCheckbox" id="selectAllCheckbox"> </th>
+    <th>Id</th>
     <th>Name</th>
     <th>Expiration Date</th>
     <th>Category</th>

@@ -152,6 +152,19 @@ function addToOwnedFoodsScanner(){
     }))
 }
 
+function returnStringScanner(){
+    let scannerString = 1;
+    //----------------------------------------------------------------------
+    //
+    // dingen om de scanner te laten communiceren
+    //
+    //----------------------------------------------------------------------
+    //
+    // stop de string die wordt doorgegeven door de scanner in scannerstring
+    //
+    //----------------------------------------------------------------------
+    return scannerString;
+}
 
 //-------------------------------------------EVENTLISTENERS-------------------------------------------------------------
 
@@ -216,6 +229,11 @@ const testbutton = document.getElementById("testbutton");
 testbutton.addEventListener('click', () => {
     console.log(ownedFood);
 });
+
+
+
+
+
 
 
 

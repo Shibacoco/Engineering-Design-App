@@ -1,19 +1,174 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
-    <link href="./styles.css" rel="stylesheet">
-    <title>Hello World!</title>
+    <link href="./styles.css" rel="stylesheet" />
+    <title>FridgeKeep</title>
   </head>
-  <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
 
-    <!-- You can also require other files to run in this process -->
+  <body>
+    <div class="add-fruit">
+      <div class="back-fru">
+        <i class="fa-solid fa-arrow-left"></i>
+      </div>
+      <div class="add-title">
+        <h1>FRUIT</h1>
+      </div>
+      <div class="add-fruit-grid"></div>
+      <div class="add-fruit-options">
+        <h2 class="fruit-options-name">Add Apple</h2>
+        <div class="wrap">
+          <label>Amount:</label>
+          <input type="number" class="fruit-amount" required>
+        </div>
+        <div class="wrap">
+          <label>Due Date:</label>
+          <input type="date" class="fruit-due-date" required>
+          </div>
+          <div class="fruit-options-add">
+            <i class="fa-solid fa-plus"></i>
+          </div>
+      </div>
+    </div>
+    <div class="add-vegetable">
+      <div class="back-veg">
+        <i class="fa-solid fa-arrow-left"></i>
+      </div>
+      <div class="add-title">
+        <h1>VEGETABLES</h1>
+      </div>
+      <div class="add-vegetable-grid"></div>
+      <div class="add-vegetable-options">
+        <h2 class="vegetable-options-name">Add Tomato</h2>
+        <div class="wrap">
+          <label>Amount:</label>
+          <input type="number" class="vegetable-amount">
+        </div>
+        <div class="wrap">
+          <label>Due Date:</label>
+          <input type="date" class="vegetable-due-date">
+          </div>
+          <div class="vegetable-options-add">
+            <i class="fa-solid fa-plus"></i>
+          </div>
+      </div>
+    </div>
+    <div class="add-other">
+      <div class="back-oth">
+        <i class="fa-solid fa-arrow-left"></i>
+      </div>
+      <div class="add-title">
+        <h1>OTHER</h1>
+      </div>
+      <div class="add-other-grid"></div>
+      <div class="add-other-options">
+        <h2 class="other-options-name">Add Bread</h2>
+        <div class="wrap">
+          <label>Amount:</label>
+          <input type="number" class="other-amount">
+        </div>
+        <div class="wrap">
+          <label>Due Date:</label>
+          <input type="date" class="other-due-date">
+          </div>
+          <div class="other-options-add">
+            <i class="fa-solid fa-plus"></i>
+          </div>
+      </div>
+    </div>
+    <div class="manual-add-screen">
+      <h1>MANUAL ADDING</h1>
+      <div class="close-manual-add">X</div>
+      <div class="fruit-wrapper">
+        <div class="add-name">
+          <h1>FRUIT</h1>
+        </div>
+        <div class="add-name-image">
+          <img src="./img/fruit.jpg" alt="">
+        </div>
+      </div>
+      <div class="vegetable-wrapper">
+        <div class="add-name">
+          <h1>VEGETABLES</h1>
+        </div>
+        <div class="add-name-image">
+          <img src="./img/vegetables.jpg" alt="">
+        </div>
+      </div>
+      <div class="other-wrapper">
+        <div class="add-name">
+          <h1>OTHER</h1>
+        </div>
+        <div class="add-name-image">
+          <img src="./img/other.jpeg" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="scan-screen">
+      <div class="scan-title-wrapper">
+        <h1 class="scan-title">SCAN ITEMS</h1>
+      </div>
+      <div class="scan-inner-wrapper">
+      <div class="to-scan">
+        <img src="./img/barcode.png" alt="" />
+        <p class="scan-description">
+          Scan the barcode of the product you would like to add.
+        </p>
+      </div>
+      <div class="manual-add">
+        <div class="manual-add-button">Add Manually</div>
+      </div>
+      </div>
+      <div class="close-scan">X</div>
+    </div>
+    <div class="fridge">
+      <h1 class="fridge-title">MY FRIDGE</h1>
+      <div class="close-fridge">X</div>
+      
+    </div>
+    <div class="container">
+      <div class="header">
+        <div class="groceryList">
+          <img src="./img/groceryBasket.png" alt="" />
+        </div>
+        <div class="scan">
+          <img width="48" src="./img/barcode.png" alt="" />
+        </div>
+        <h1>FRIDGEKEEP</h1>
+        <h2 class="foodTitle"></h2>
+      </div>
+      <div class="pictureSlider">
+        <div class="buttonPrev">&#60;</div>
+        <div class="pictures">
+          <div class="buttonNext">&#62;</div>
+        </div>
+        <div class="selector">
+          <div class="circle"></div>
+          <div class="circle"></div>
+          <div class="circle"></div>
+          <div class="circle"></div>
+          <div class="circle"></div>
+          <div class="circle"></div>
+          <div class="circle"></div>
+        </div>
+      </div>
+      <div class="myGroceries">
+        <h2>MY GROCERIES</h2>
+        <div class="groceries">
+          <div class="grocery"></div>
+          <div class="grocery"></div>
+          <div class="grocery"></div>
+          <div class="grocery"></div>
+          <div class="grocery"></div>
+          <div class="grocery"></div>
+        </div>
+      </div>
+    </div>
     <script src="./renderer.js"></script>
+    <script
+      src="https://kit.fontawesome.com/07c100f460.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

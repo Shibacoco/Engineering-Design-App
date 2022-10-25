@@ -46,6 +46,7 @@ body {
 
 .selected > img {
   width: calc(100vw - 40px);
+  cursor: pointer;
 }
 
 .picture > img {
@@ -77,14 +78,14 @@ body {
   right: 20px;
   background-color: rgba(255, 255, 255, 0.2);
   z-index: 10;
-  height: 290px;
+  height: 300px;
   width: 100px;
   border-radius: 20px 0px 0px 20px;
   transition: 0.1s background-color ease-in-out;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 56;
+  font-size: inherit;
   font-family: "Kanit", sans-serif;
   font-weight: bolder;
   color: rgba(241, 241, 241, 0.15);

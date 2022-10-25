@@ -88,7 +88,6 @@ let receptenLijst = {
       name: "Hachee",
       ingredients: [
         "flespompoen",
-        "MonChou",
         "basterdsuiker",
         "koek- en speculaaskruiden",
         "quiche & taartdeeg",
@@ -221,10 +220,10 @@ const resetFridge = () => {
   title.innerText = "MY FRIDGE";
   let closeDiv = document.createElement("div");
   closeDiv.classList.add("close-fridge");
+  closeDiv.innerText = "X";
   closeDiv.addEventListener("click", () => {
     document.querySelector(".fridge").classList.remove("fridge-open");
   });
-  closeDiv.innerText = "X";
   cont.appendChild(title);
   cont.appendChild(closeDiv);
 
@@ -243,6 +242,19 @@ const resetFridge = () => {
     fridgeItemName.classList.add("fridge-item-name");
     let fridgeItemDue = document.createElement("div");
     fridgeItemDue.classList.add("fridge-item-due");
+    //------------------------------------------------------
+    //------------------------------------------------------
+    //------------------------------------------------------
+    //changed voor de button
+    let fridgeItemAmount = document.createElement("input");
+    fridgeItemAmount.type = "number";
+    fridgeItemAmount.classList.add("fridge-item-amount");
+    let updateDiv = document.createElement("input");
+    updateDiv.type = "button";
+    updateDiv.classList.add("fridge-item-update");
+    //------------------------------------------------------
+    //------------------------------------------------------
+    //------------------------------------------------------
     let deleteDiv = document.createElement("div");
     deleteDiv.classList.add("delete");
     let calenderIcon = document.createElement("i");
@@ -255,14 +267,20 @@ const resetFridge = () => {
 
     fridgeItemWrapper.appendChild(fridgeItemName);
     fridgeItemWrapper.appendChild(fridgeItemDue);
+    fridgeItemWrapper.appendChild(fridgeItemAmount);
+    fridgeItemWrapper.appendChild(updateDiv);
     fridgeItemWrapper.appendChild(deleteDiv);
 
     deleteDiv.appendChild(deleteIcon);
 
+    let updateText = "Update";
+
     fridgeItemDue.appendChild(calenderIcon);
     fridgeItemDue.innerText = item.expirationDate;
-
     fridgeItemName.innerText = item.name;
+    fridgeItemAmount.value = item.amount;
+    updateDiv.value = updateText;
+
     let URL = "";
 
     for (let i = 0; i < 3; i++) {
@@ -382,8 +400,8 @@ const resetFirstOut = () => {
 function dateToNumber(date) {
   let dateParts = date.split("-");
 
-  return (parseInt(dateParts[0]) - 1) * 365 + parseInt(dateParts[1]) * 30 + parseInt(dateParts[2]);
-};
+  return (parseInt(dateParts[0]) - 1) * 365 + parseInt(dateParts[1]) * 31 + parseInt(dateParts[2]);
+}
 
 const onOpen = () => {
   receptenLijst.recepten.forEach((recept) => {
@@ -412,7 +430,7 @@ const onOpen = () => {
 
     container.appendChild(pictureDiv);
   });
-};
+}
 
 const buildVegetables = () => {
   groceriesLijst.vegetables.forEach((vegetable) => {
@@ -435,7 +453,7 @@ const buildVegetables = () => {
 
     document.querySelector(".add-vegetable-grid").appendChild(div);
   });
-};
+}
 
 const buildFruit = () => {
   groceriesLijst.fruit.forEach((fruit) => {
@@ -458,7 +476,7 @@ const buildFruit = () => {
 
     document.querySelector(".add-fruit-grid").appendChild(div);
   });
-};
+}
 
 const buildOther = () => {
   groceriesLijst.other.forEach((other) => {
@@ -481,7 +499,7 @@ const buildOther = () => {
 
     document.querySelector(".add-other-grid").appendChild(div);
   });
-};
+}
 
 /* Initial startup */
 
@@ -560,6 +578,10 @@ document.querySelector(".scan").addEventListener("click", () => {
 
 document.querySelector(".close-scan").addEventListener("click", () => {
   document.querySelector(".scan-screen").classList.remove("scan-screen-open");
+});
+
+document.querySelector(".close-fridge").addEventListener("click", () => {
+  document.querySelector(".fridge").classList.remove("fridge-open");
 });
 
 document.querySelector(".manual-add").addEventListener("click", () => {

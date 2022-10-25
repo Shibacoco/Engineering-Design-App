@@ -3,6 +3,10 @@ const {app, BrowserWindow} = require('electron')
 const path = require('path')
 const electron = require('electron')
 
+require('electron-reload')(__dirname, {
+  electron: require(`${__dirname}/node_modules/electron`)
+});
+
 function createWindow () {
   const mainWindow = new BrowserWindow({
     width: 450,
@@ -11,7 +15,7 @@ function createWindow () {
       preload: path.join(__dirname, 'preload.js'),
       }
   })
-  mainWindow.setResizable(false);
+  // mainWindow.setResizable(false);
   mainWindow.loadFile('index.html')
 }
 
